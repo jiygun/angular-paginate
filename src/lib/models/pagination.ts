@@ -14,17 +14,17 @@ export class Pagintion{
     private _isLastSectionVisible:boolean;
 
     constructor(firstPage?:number,activePageNumber?:number,maxShowAblePage?:number,totalPage?:number){
-        this._firstPage=firstPage==null||firstPage==undefined?this.DEFAULT_FIRSTPAGE:Math.floor(firstPage);
-        this._activePageNumber=activePageNumber==null||activePageNumber==undefined?this.DEFAULT_ACTIVEPAGE:Math.floor(activePageNumber);
-        this._maxShowAblePage=maxShowAblePage==null||maxShowAblePage==undefined?this.DEFAULT_MAXSHOWABLEPAGE:Math.floor(maxShowAblePage);
-        this._totalPages=totalPage==null||totalPage==undefined?this.DEFAULT_TOTALPAGES:Math.floor(totalPage);
+        this._firstPage=firstPage?Math.floor(firstPage):this.DEFAULT_FIRSTPAGE;
+        this._activePageNumber=activePageNumber?Math.floor(activePageNumber):this.DEFAULT_ACTIVEPAGE;
+        this._maxShowAblePage=maxShowAblePage?Math.floor(maxShowAblePage):this.DEFAULT_MAXSHOWABLEPAGE;
+        this._totalPages=totalPage?Math.floor(totalPage):this.DEFAULT_TOTALPAGES;
         this._isFirstSectionVisible=false;
         this._isLastSectionVisible=false;
     }
     getPages(activePageNumber:number):Array<number>{
         let pageNumbers:Array<number>=new Array();
-        if(this._totalPages===0||this._totalPages==null||this._totalPages==undefined) return pageNumbers;
-        if(activePageNumber!==null||activePageNumber!==undefined) this._activePageNumber=activePageNumber;
+        if(this._totalPages===0||!this._totalPages) return pageNumbers;
+        if(activePageNumber) this._activePageNumber=activePageNumber;
         for(let i=this.getStartIndex();i<=this.getFinishIndex();i++){
             pageNumbers.push(i);
         }
@@ -69,19 +69,15 @@ export class Pagintion{
         return this._isLastSectionVisible;
     }
     set firstPage(firstPage:number){
-        firstPage!=null&&firstPage!=undefined?
-        this._firstPage=Math.floor(firstPage):null;
+        if(firstPage)this._firstPage=Math.floor(firstPage)
     }
     set activePage(activePage:number){
-        activePage!=null&&activePage!=undefined?
-        this._activePageNumber=Math.floor(activePage):null;
+        if(activePage)this._activePageNumber=Math.floor(activePage);
     }
     set maxShowAblePage(maxShowAblePage:number){
-        maxShowAblePage!=null&&maxShowAblePage!=undefined?
-        this._maxShowAblePage=Math.floor(maxShowAblePage):null;
+        if(maxShowAblePage)this._maxShowAblePage=Math.floor(maxShowAblePage)
     }
     set totalPages(totalPages:number){
-        totalPages!=null&&totalPages!=undefined?
-        this._totalPages=Math.floor(totalPages):null;
+        if(totalPages)this._totalPages=Math.floor(totalPages)
     }
 }

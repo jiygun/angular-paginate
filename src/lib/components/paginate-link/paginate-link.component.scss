@@ -1,0 +1,18 @@
+:host{
+    padding: .5rem .75rem;
+    cursor: pointer;
+    color:#5f6a6a;
+    border:1px solid #5f6a6a;
+    border-radius: 10px;    
+    -webkit-transition: all .45s;
+    -o-transition: all .45s;
+    transition: all .45s;
+    &:hover{
+        color: #fff;
+        background-color:#5f6a6a;
+    }
+    &.active{
+        color: #fff;
+        background-color:#5f6a6a;
+    }
+}

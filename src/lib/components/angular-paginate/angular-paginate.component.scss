@@ -1,0 +1,17 @@
+$color-dark: #0B0C10;
+$color-white:#C5C6C7;
+:host{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.xs-none{
+    display: none !important;
+}
+
+@media (min-width: 768px) {
+    .xs-none{
+        display: block !important;
+    }
+}
